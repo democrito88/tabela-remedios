@@ -1,0 +1,11 @@
+.input{
+    border: none;
+    text-align: center;
+    height: inherit;
+    width: 100%;
+}
+
+.input:focus{
+    outline: none;
+    border: none;
+}

@@ -4,7 +4,7 @@ Simples projeto para formar uma tabela diária de remédios, imprimí-la e pendu
 
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 [![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
-![Version](https://img.shields.io/badge/v1.0-FF4D00?style=for-the-badge)
+![Version](https://img.shields.io/badge/v1.1-FF4D00?style=for-the-badge)
 
 [Confira aqui!](https://tabela-remedios.vercel.app/)
 
@@ -12,7 +12,7 @@ Simples projeto para formar uma tabela diária de remédios, imprimí-la e pendu
 Preencha o horário inicial e o final de tomar remédios. Peencha o intervalo de horas que precisa tomar e a quantidade de remédios. A aplicação monta a tabela pra você. É só imprimir e oreencher os campos.
 
 ### Future improvements
-Poder escrever na tabela antes de imprimí-la
+Consertar o tamanho máximo do main para a tela toda.
 
 ### Author
 ##### Demócrito d'Anunciação

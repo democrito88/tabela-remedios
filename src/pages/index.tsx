@@ -1,4 +1,6 @@
+import { Input } from "@/components/Input";
 import PrintButton from "@/components/PrintButton";
+import { Td } from "@/components/Td";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ChangeEvent, RefObject, useMemo, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
@@ -116,7 +118,9 @@ export default function Home() {
             &#128138; Horários de remédios
           </h4>
           <small className="text-sm text-center">nome do paciente</small>
-          <div className="border rounded-md p-5 mt-0.5 mb-2 w-70"></div>
+          <div className="border rounded-md mt-0.5 mb-2 w-70 h-10">
+            <Input />
+          </div>
         </div>
         <div>
           <table className="w-full table-auto border">
@@ -134,12 +138,10 @@ export default function Home() {
             <tbody>
               {Array.from({ length: quantidade }).map((_, idx) => (
                 <tr key={idx}>
-                  <td className="border px-2"></td>
-                  <td className="border px-2"></td>
+                  <Td classe="border" />
+                  <Td classe="border" />
                   {horarios.map((h, i) => (
-                    <td key={i} className="border px-2 text-center">
-                      &nbsp;
-                    </td>
+                    <Td key={i} classe="border"/>
                   ))}
                 </tr>
               ))}
