@@ -62,7 +62,7 @@ export default function Home() {
   });
 
   return (
-    <main className="bg-linear-to-t from-gray-950 to-gray-800 container text-gray-950 p-3.5 w-full h-full">
+    <main className="bg-linear-to-t from-gray-950 to-gray-800 text-gray-950 p-3.5 w-screen min-h-screen">
       {/* Inputs */}
       <div className="border rounded-md p-5 my-2.5 bg-white w-100 space-y-2 m-auto flex gap-1">
         <div className="flex flex-col justify-center items-center">

@@ -12,5 +12,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   if (!mounted) return null;
 
-  return <Component {...pageProps} />;
+  return <div className="min-h-screen w-screen"><Component {...pageProps} /></div>;
 }

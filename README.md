@@ -9,10 +9,7 @@ Simples projeto para formar uma tabela diária de remédios, imprimí-la e pendu
 [Confira aqui!](https://tabela-remedios.vercel.app/)
 
 ### How to use
-Preencha o horário inicial e o final de tomar remédios. Peencha o intervalo de horas que precisa tomar e a quantidade de remédios. A aplicação monta a tabela pra você. É só imprimir e oreencher os campos.
-
-### Future improvements
-Consertar o tamanho máximo do main para a tela toda.
+Preencha o horário inicial e o final de tomar remédios. Peencha o intervalo de horas que precisa tomar e a quantidade de remédios. A aplicação monta a tabela pra você. É só imprimir e preencher os campos.
 
 ### Author
 ##### Demócrito d'Anunciação
