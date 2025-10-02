@@ -62,74 +62,91 @@ export default function Home() {
   });
 
   return (
-    <main className="bg-linear-to-t from-gray-950 to-gray-800 text-gray-950 p-3.5 w-screen min-h-screen">
-      {/* Inputs */}
-      <div className="border rounded-md p-5 my-2.5 bg-white w-100 space-y-2 m-auto flex gap-1">
-        <div className="flex flex-col justify-center items-center">
-          <div>
-            <label>De</label>
-            <input
-              type="time"
-              value={minutesToTime(de)}
-              onChange={handleDe}
-              className="ml-2"
-            />
+    <main className="bg-gradient-to-t from-gray-950 to-gray-800 text-gray-950 min-h-screen py-6 px-2 flex flex-col items-center">
+      {/* Inputs Section */}
+      <section className="bg-white rounded-lg shadow-md p-6 w-full max-w-3xl mb-6">
+        <h2 className="text-lg font-semibold mb-4 text-gray-700">Configuração dos horários</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="flex flex-col gap-4">
+            <div className="flex justify-start gap-3">
+              <div>
+                <label htmlFor="de" className="block text-sm font-medium text-gray-600">De</label>
+                <input
+                  id="de"
+                  type="time"
+                  value={minutesToTime(de)}
+                  onChange={handleDe}
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label htmlFor="ate" className="block text-sm font-medium text-gray-600">Até</label>
+                <input
+                  id="ate"
+                  type="time"
+                  value={minutesToTime(ate)}
+                  onChange={handleAte}
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label htmlFor="intervalo" className="block text-sm font-medium text-gray-600">Intervalo (minutos)</label>
+                <input
+                  id="intervalo"
+                  type="number"
+                  min={1}
+                  value={intervalo}
+                  onChange={handleIntervalo}
+                  className="mt-1 block w-25 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  placeholder="Ex: 120"
+                />
+              </div>
+            </div>
+            <div className="flex justify-start gap-3">
+              <div>
+                <label htmlFor="quantidade" className="block text-sm font-medium text-gray-600">Quantos remédios diferentes?</label>
+                <input
+                  id="quantidade"
+                  type="number"
+                  min={1}
+                  value={quantidade}
+                  onChange={handleQuantidade}
+                  className="mt-1 block w-25 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  placeholder="Ex: 1"
+                />
+              </div>
+            </div>
           </div>
-          <div>
-            <label>Até</label>
-            <input
-              type="time"
-              value={minutesToTime(ate)}
-              onChange={handleAte}
-              className="ml-2"
-            />
-          </div>
-          <div className="flex flex-col items-center">
-            <label>Intervalo (minutos)</label>
-            <input
-              type="number"
-              min={1}
-              value={intervalo}
-              onChange={handleIntervalo}
-              className="ml-2 w-12"
-            />
-          </div>
-          <div className="flex flex-col items-center">
-            <label>Quantos remédios diferentes?</label>
-            <input
-              type="number"
-              min={1}
-              value={quantidade}
-              onChange={handleQuantidade}
-              className="ml-2 w-12"
-            />
+          <div className="flex flex-col items-center justify-center gap-4">
+            <PrintButton handlePrint={handlePrint} />
+            <span className="text-xs text-gray-500">Clique para imprimir a tabela</span>
           </div>
         </div>
-        <div className="w-px bg-gray-300 h-50 mx-4"></div> 
-        <div className="flex flex-col items-center justify-center">
-          <PrintButton handlePrint={handlePrint} />
-        </div>
-      </div>
+      </section>
 
-      {/* Tabela */}
-      <div id="tabela" ref={componentRef} className="border rounded-md p-5 my-0.5 bg-white m-auto">
-        <div className="flex flex-col items-center">
-          <h4 className={`${geistSans.className} text-xl underline`}>
+      {/* Table Section */}
+      <section
+        id="tabela"
+        ref={componentRef}
+        className="bg-white rounded-lg shadow-md p-6 w-full max-w-3xl"
+      >
+        <div className="flex flex-col items-center mb-4">
+          <h4 className={`${geistSans.className} text-xl underline mb-1`}>
             &#128138; Horários de remédios
           </h4>
-          <small className="text-sm text-center">nome do paciente</small>
-          <div className="border rounded-md mt-0.5 mb-2 w-70 h-10">
-            <Input />
+          <small className="text-sm text-center text-gray-500 mb-2">Nome do paciente</small>
+          <div className="border rounded-md mb-2 w-full max-w-xs">
+            <Input placeholder="Digite o nome do paciente" />
           </div>
         </div>
-        <div>
-          <table className="w-full table-auto border">
-            <thead>
+        <div className="overflow-x-auto">
+          <table className="w-full table-auto border rounded-md">
+            <thead className=" sticky top-0 z-10">
               <tr>
-                <th className="table-cell border px-2">Remédio</th>
-                <th className="table-cell border px-2">Quantidade</th>
+                <th className="border px-2 py-2 text-left">Remédio</th>
+                <th className="border px-2 py-2 text-left">Quantidade</th>
                 {horarios.map((h, idx) => (
-                  <th key={idx} className="table-cell border px-2">
+                  <th key={idx} className="border px-2 py-2 text-center">
                     {minutesToTime(h)}
                   </th>
                 ))}
@@ -137,18 +154,18 @@ export default function Home() {
             </thead>
             <tbody>
               {Array.from({ length: quantidade }).map((_, idx) => (
-                <tr key={idx}>
-                  <Td classe="border" />
-                  <Td classe="border" />
+                <tr key={idx} className={idx % 2 === 0 ? "bg-gray-50" : ""}>
+                  <Td classe="border px-2 py-2" />
+                  <Td classe="border px-2 py-2" />
                   {horarios.map((h, i) => (
-                    <Td key={i} classe="border"/>
+                    <Td key={i} classe="border px-2 py-2 text-center" />
                   ))}
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </div>
+      </section>
     </main>
   );
 }
